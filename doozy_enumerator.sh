@@ -10,7 +10,6 @@ cyan='\033[0;36m'
 # Clear the color after that
 clear='\033[0m'
 
-function print_banner
 {
     echo -e "\033[1;31m
       ,---,
