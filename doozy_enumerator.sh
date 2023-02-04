@@ -10,8 +10,8 @@ cyan='\033[0;36m'
 # Clear the color after that
 clear='\033[0m'
 
-{
-    echo -e "\033[1;31m
+
+echo -e "\033[1;31m
       ,---,
     .'  .' \`\\
     ,---.'     \\    ,---.     ,---.         ,----,
@@ -27,15 +27,15 @@ clear='\033[0m'
     '---'                                              \\  ' ;
                                                       \`--\`
     \033[0m"
-    echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-    echo "   Enumeration made easier with the Doozy Enumerator"
-    echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-    echo
-    echo -e "${green}For cheatsheets and more: https://navkang.github.io/Doozy${clear}"
-    echo
-    echo -e "${red}====================================================================================================${clear}"
-    echo
-}
+echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo "   Enumeration made easier with the Doozy Enumerator"
+echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo
+echo -e "${green}For cheatsheets and more: https://navkang.github.io/Doozy${clear}"
+echo
+    
+echo
+
 
 function run_nmap
 {
