@@ -34,9 +34,6 @@ echo
 echo -e "${green}For cheatsheets and more: https://navkang.github.io/Doozy${clear}"
 echo
     
-echo
-
-
 function run_nmap
 {
     echo
