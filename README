@@ -16,7 +16,7 @@ This tool will do the following:
 1. Run nmap scan and show only the ports open
 2. Run nmap detailed scan using flags -sV and -sC
 3. Run a directory fuzzing scan for hidden directories using Gobuster
-4. Run a virtual host discovery scan using Gobuster
+4. Run a virtual host discovery scan using Ffuf
 5. Run a Nikto scan to search for any vulnerabilities
 
 INFORMATION:
