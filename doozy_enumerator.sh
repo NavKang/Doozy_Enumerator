@@ -55,7 +55,7 @@ function run_nmap
     echo
 }
 
-function run_gobuster
+function run_gobuster_ffuf
 {
     echo -e "${green}..........Starting gobuster scan..........${clear}"
     echo
@@ -68,11 +68,11 @@ function run_gobuster
     echo
     echo -e "${red}====================================================================================================${clear}"
     echo
-    echo -e "${green}..........Starting gobuster virtual host scan..........${clear}"
+    echo -e "${green}..........Starting ffuf virtual host scan..........${clear}"
     echo
-    gobuster vhost -u "$target" -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt
+    ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt -u http://$target -H "Host: FUZZ.$target" 
     echo
-    echo -e "${green}You may need to use -size flag to remove unwanted results${clear}"
+    echo -e "${green}You may need to remove unwanted results${clear}"
     echo -e "${red}====================================================================================================${clear}"
     echo
 }
@@ -97,7 +97,7 @@ function run_nikto
 function main
 {
     run_nmap
-    run_gobuster
+    run_gobuster_ffuf
     run_nikto
 }
 
@@ -106,7 +106,7 @@ if [ $# -ne 1 ]
   then
     echo "No arguments supplied"
     echo "Please supply a target"
-    echo "Example: ./doozy_enumerator.sh -t=http://127.0.0.1"
+    echo "Example: ./doozy_enumerator.sh -t=127.0.0.1"
     exit 1
 fi
 
