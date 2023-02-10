@@ -69,9 +69,9 @@ function run_gobuster_ffuf
     echo
     echo -e "${green}..........Starting ffuf virtual host scan (these results are saved to file only)..........${clear}"
     echo
-    ffuf -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-1000.txt -s -u http://$target -H "Host: FUZZ.$target"
+    ffuf -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt -s -u http://$target -H "Host: FUZZ.$target"
     echo
-    echo -e "${green}Try: ffuf -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt -s -u http://$target -H "Host: FUZZ.$target"${clear}"
+    echo -e "${green}Try: ffuf -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-10000.txt -s -u http://$target -H "Host: FUZZ.$target"${clear}"
     echo -e "${red}====================================================================================================${clear}"
     echo
     echo -e "${green}..........Starting gobuster scan with extensions .php, .zip, .txt..........${clear}"
