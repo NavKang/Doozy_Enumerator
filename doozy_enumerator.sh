@@ -64,7 +64,6 @@ function run_gobuster_ffuf
     echo
     echo -e "${green}Please note you may need to run additional gobuster scans: see below${clear}"
     echo "gobuster dir -u $target -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt"
-    echo -e "${green}Also consider using -x to search for extensions (ie .txt .php)${clear}"
     echo
     echo -e "${red}====================================================================================================${clear}"
     echo
@@ -75,6 +74,20 @@ function run_gobuster_ffuf
     echo -e "${green}You may need to remove unwanted results${clear}"
     echo -e "${red}====================================================================================================${clear}"
     echo
+    echo -e "${green}..........Starting gobuster scan with extensions .php, .zip, .txt..........${clear}"
+    echo
+    gobuster dir -u "$target" -w /usr/share/wordlists/dirb/big.txt -x .php, .txt, .zip | grep "Status: 200\|Status: 301\|Status: 302"
+    echo
+    echo -e "${green}Always try other wordlists, just copy and paste the below for further scans${clear}"
+    echo -e "${green}Also try adding further extensions${clear}"
+    echo
+    echo "gobuster dir -u $target -w /usr/share/wordlists/dirb/common.txt -x .php, .txt, .zip"
+    echo "gobuster dir -u $target -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt -x .php, .txt, .zip"
+    echo
+    #echo -e "${green}..........DNS Mode Gobuster with IPs..........${clear}"
+    #echo
+    #gobuster -m dns -u $target -t 100 -w /usr/share/wordlists/dirb/common.txt -i
+    #echo
 }
 
 function run_nikto
