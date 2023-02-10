@@ -67,20 +67,20 @@ function run_gobuster_ffuf
     echo
     echo -e "${red}====================================================================================================${clear}"
     echo
-    echo -e "${green}..........Starting ffuf virtual host scan..........${clear}"
+    echo -e "${green}..........Starting ffuf virtual host scan (these results are saved to file only)..........${clear}"
     echo
-    ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt -u http://$target -H "Host: FUZZ.$target" 
+    ffuf -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-1000.txt -s -u http://$target -H "Host: FUZZ.$target"
     echo
-    echo -e "${green}You may need to remove unwanted results${clear}"
+    echo -e "${green}Try: ffuf -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt -s -u http://$target -H "Host: FUZZ.$target"${clear}"
     echo -e "${red}====================================================================================================${clear}"
     echo
     echo -e "${green}..........Starting gobuster scan with extensions .php, .zip, .txt..........${clear}"
     echo
     gobuster dir -u "$target" -w /usr/share/wordlists/dirb/big.txt -x .php, .txt, .zip | grep "Status: 200\|Status: 301\|Status: 302"
     echo
+    echo
     echo -e "${green}Always try other wordlists, just copy and paste the below for further scans${clear}"
     echo -e "${green}Also try adding further extensions${clear}"
-    echo
     echo "gobuster dir -u $target -w /usr/share/wordlists/dirb/common.txt -x .php, .txt, .zip"
     echo "gobuster dir -u $target -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt -x .php, .txt, .zip"
     echo
