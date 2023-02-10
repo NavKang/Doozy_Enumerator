@@ -66,13 +66,16 @@ function run_gobuster_ffuf
     echo "gobuster dir -u $target -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt"
     echo
     echo -e "${red}====================================================================================================${clear}"
+    
     echo
     echo -e "${green}..........Starting ffuf virtual host scan (these results are saved to file only)..........${clear}"
+    echo "NOTE: The results are saved to text file: ffuf_results.txt"
     echo
-    ffuf -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt -s -u http://$target -H "Host: FUZZ.$target"
+    ffuf -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt -s -u http://$target -H "Host: FUZZ.$target" -o ffuf_results.txt
     echo
-    echo -e "${green}Try: ffuf -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-10000.txt -s -u http://$target -H "Host: FUZZ.$target"${clear}"
+    echo -e "${green}Try: ffuf -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-10000.txt -u http://$target -H "Host: FUZZ.$target"${clear}"
     echo -e "${red}====================================================================================================${clear}"
+    
     echo
     echo -e "${green}..........Starting gobuster scan with extensions .php, .zip, .txt..........${clear}"
     echo
@@ -98,6 +101,7 @@ function run_nikto
     echo
     nikto -host "$target"
     echo
+    echo "If you find HTTP running on more ports, ensure you run Nikto against them too"
     echo -e "${red}====================================================================================================${clear}"
     echo
     echo "Scans complete,thank you for using The Doozy Enumerator"
