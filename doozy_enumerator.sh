@@ -63,7 +63,7 @@ function run_gobuster_ffuf
     echo
     echo
     echo -e "${green}Please note you may need to run additional gobuster scans: see below${clear}"
-    echo "gobuster dir -u $target -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt"
+    echo "gobuster dir -u $target -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt | grep "Status: 200\|Status: 301\|Status: 302 "
     echo
     echo -e "${red}====================================================================================================${clear}"
     
